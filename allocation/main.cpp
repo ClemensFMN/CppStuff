@@ -32,8 +32,14 @@ int main() {
         cp2->someFunc();
         delete(cp2); // explicit deletion of cp2 ->  -> destructor called
 
-        unique_ptr<Class1> upc1(new Class1("upc1")); // the unique_ptr is an object on the stack whcih handles the heap-allocated Class1
+        //unique_ptr<Class1> upc1(new Class1("upc1")); // the unique_ptr is an object on the stack whcih handles the heap-allocated Class1
+        auto upc1 = make_unique<Class1>("upc1"); // alternative; requires c++17 option in .pro file
         upc1->someFunc();
+        //not possible auto upc2 = upc1;
+        auto upc2 = move(upc1);
+        upc2->someFunc();
+        if(upc1 == nullptr) cout << "upc1 = nullptr" << endl;
+        if(upc2 == nullptr) cout << "upc2 = nullptr" << endl;
 
     } // c1 destructor called as class c1 goes out of scope. Same for upc1: stack object -> deallocated when it goes out of scope and calls destructor of heap-allocated class
 

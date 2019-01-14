@@ -2,6 +2,7 @@
 #include <QSqlDatabase>
 #include <QtSql>
 #include <QTableView>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
@@ -31,6 +32,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     */
     /* init db finished */
 
+    /* execute "random" sql query */
+    QSqlQuery q("select * from books;");
+    while(q.next()) {
+        qDebug() << q.value(0).toString() << q.value(1).toString() << q.value(2).toString() << q.value(3).toString();
+    }
+
+    /* connect SqlTableModel to table and display on mainwindow */
     QSqlTableModel *model = new QSqlTableModel(parent, db);
     model->setTable("books");
     model->setEditStrategy(QSqlTableModel::OnFieldChange);

@@ -4,8 +4,9 @@
 #include <QMainWindow>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
+#include <QSqlQuery>
 #include <QFileDialog>
-
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +22,8 @@ public:
 
 private slots:
     void on_tablesView_clicked(const QModelIndex &index);
+
+    void on_execButton_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -49,3 +49,26 @@ void MainWindow::on_tablesView_clicked(const QModelIndex &index) {
     setWindowTitle(tname);
     // and are done :-)
 }
+
+// create table micki(id integer primary key, title varchar);
+// select * from sqlite_master;
+// insert into micki values(1,'dklfdlkjf');
+// select * from micki;
+
+void MainWindow::on_execButton_clicked() {
+    QString contents = ui->queryField->toPlainText();
+    QStringList lines = contents.split("\n");
+
+    qDebug() << contents;
+
+    QStringListIterator itlines(lines);
+    while(itlines.hasNext()) {
+
+        auto query = itlines.next();
+        qDebug() << query;
+
+        QSqlQuery q;
+        auto res = q.exec(query);
+        qDebug() << res;
+    }
+}

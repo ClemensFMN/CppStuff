@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-01-14T08:53:59
+# Project created by QtCreator 2019-02-28T10:35:28
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = dbstuff
+TARGET = DBQueryView
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -30,6 +30,9 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h
+
+FORMS += \
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
